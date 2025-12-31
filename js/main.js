@@ -1,4 +1,28 @@
-  // ------ ビューワートグル機能 ------ // 
+import { initShortcuts } from "./shortcuts.js";
+
+
+
+  function showLoading(detailText = "") {
+    const overlay = document.getElementById("loading-overlay");
+    const detail = document.getElementById("loading-detail");
+    if (!overlay) return;
+    overlay.classList.remove("hidden");
+    if (detail) detail.textContent = detailText;
+  }
+
+  function hideLoading() {
+    const overlay = document.getElementById("loading-overlay");
+    if (!overlay) return;
+    overlay.classList.add("hidden");
+  }
+
+  function setLoadingDetail(text) {
+    const detail = document.getElementById("loading-detail");
+    if (detail) detail.textContent = text;
+  }
+
+
+// ------ ビューワートグル機能 ------ // 
     const checkbox = document.getElementById('toggleCheck');
     const targetBox = document.getElementById('genga_OSD');
 
@@ -55,7 +79,9 @@
     let imageListId =[];
     let imageLabels = [];
     let gengaLabels = [];
+    let currentGengaLabel = [];
     let layerOffsets = [];
+    let layer_opacity = [];
     let layerToggles = [];
     let timeData = [];
     let currentIndex = 0;
@@ -379,34 +405,46 @@ function bindTimelineMarkerEvents() {
 
     //読み込み分岐関数
     async function loadIIIF(url) {
+      showLoading("IIIFを取得中…");
+
+      try {
         const res = await fetch(url);
         const json = await res.json();
 
         const type = json.type || json['@type'];
 
         if (type === 'Manifest') {
-            loadManifest(json);
+          setLoadingDetail("Manifestを解析中…");
+          loadManifest(json);
 
         } else if (type === 'Collection') {
-            const materials = await loadCollection(json);
+          setLoadingDetail("Collectionを解析中…");
+          const materials = await loadCollection(json);
 
-            const layerFrameMap = attachGengaToDouga(materials);
-            const duration = materials.find(i => i.kind === "カット").duration;
+          setLoadingDetail("タイムラインを構築中…");
+          const layerFrameMap = attachGengaToDouga(materials);
+          const duration = materials.find(i => i.kind === "カット").duration;
 
-            timeData = createTimeData(layerFrameMap, duration);
-            imageList = mergeLayersByReverseOrder(layerFrameMap);
-          
-            titleName = materials.find(i => i.kind === "カット")?.Title ?? "";
-            timeSheetUrl = materials.find(i => i.kind === "timesheet_back")?.id ?? null;
+          timeData = createTimeData(layerFrameMap, duration);
+          imageList = mergeLayersByReverseOrder(layerFrameMap);
 
+          titleName = materials.find(i => i.kind === "カット")?.Title ?? "";
+          timeSheetUrl = materials.find(i => i.kind === "timesheet_back")?.id ?? null;
 
-            console.log(imageList);
+          initializePlaybackContext({ timeData, imageList, titleName, timeSheetUrl });
 
-            initializePlaybackContext({timeData,imageList,titleName,timeSheetUrl});
         } else {
-            console.error('Unknown IIIF type:', type);
+          console.error('Unknown IIIF type:', type);
+          hideLoading();
         }
+
+      } catch (e) {
+        console.error(e);
+        hideLoading();
+        alert("読み込みに失敗しました");
+      }
     }
+
 
     function initializePlaybackContext({
         timeData,
@@ -445,6 +483,7 @@ function bindTimelineMarkerEvents() {
         // --- タイムライン ---
         renderTimelineAll();
         bindTimelineMarkerEvents();
+        shortcuts?.setupLayerNumberTooltips();
         document.getElementById('show-time-sheet-button').disabled = false;
         closeTimeSheet();
 
@@ -459,10 +498,18 @@ function bindTimelineMarkerEvents() {
         title.appendChild(titleText);
 
         // --- プリロード ---
+
+        // --- プリロード ---
+        setLoadingDetail("原画をプリロード中…");
         preloadAllGengaImages(() => {
-            preloadAllDougaImages(() => {
-            setTimeout(reset, 1000);
-            });
+          setLoadingDetail("動画をプリロード中…");
+          preloadAllDougaImages(() => {
+            setLoadingDetail("初期表示を準備中…");
+            setTimeout(() => {
+              reset();
+              hideLoading();
+            }, 0);
+          });
         });
 
         reset();
@@ -479,11 +526,8 @@ function bindTimelineMarkerEvents() {
             return annotation?.body;
         }).filter(Boolean);
 
-        
-        // manifest直下のtimeを取得
         timeData = manifest.time;
 
-        // TimeSheet・タイトル設定は同じ
         timeSheetUrl = manifest.TimeSheet;
         titleName = manifest.metadata[0].value +
                     (manifest.metadata[1].value !== "" ? " Ep" + manifest.metadata[1].value : "") +
@@ -593,7 +637,7 @@ function bindTimelineMarkerEvents() {
             const key = `${item.layer}_${item.frame}`;
             if (!acc[key]) {
                 acc[key] = {
-                gengaLabel: item.label ?? null,
+                gengalabel: item.label ?? null,
                 genga: []
                 };
             }
@@ -610,13 +654,13 @@ function bindTimelineMarkerEvents() {
 
             const key = `${item.layer}_${item.frame}`;
             const gengaInfo = gengaMap[key] || {
-                gengaLabel: "",
+                gengalabel: "",
                 genga: ""
             };
 
             acc[layer].push({
                 ...item,
-                gengaLabel: gengaInfo.gengaLabel,
+                gengalabel: gengaInfo.gengalabel,
                 genga: gengaInfo.genga
             });
 
@@ -736,7 +780,7 @@ function buildImageIdMap() {
       if (!Array.isArray(gengaIds)) return;
 
       gengaIds.forEach((gengaId, idx) => {
-        const item = gengaItemMap.get(gengaId); // ✅ Map による高速取得
+        const item = gengaItemMap.get(gengaId);
         if (item) {
           const adjustedOpacity = calculateOpacity(
             visible,
@@ -823,38 +867,6 @@ function buildImageIdMap() {
         
       }
     }
-
-    function padToHalfWidth(str) {
-      const s = (str === '' || str == null) ? '-' : str.toString();
-  
-      let width = 0;
-      for (const char of s) {
-        width += isFullWidth(char) ? 2 : 1;
-      }
-
-      const totalPadding = Math.max(0, 8 - width);
-      const padLeft = Math.floor(totalPadding / 2);
-      const padRight = totalPadding - padLeft;
-
-      const padChar = '\u2002'; // EN SPACE
-      return padChar.repeat(padLeft) + s + padChar.repeat(padRight);
-    }
-
-    // 全角文字かどうかを判定
-    function isFullWidth(char) {
-      const code = char.charCodeAt(0);
-      return (
-        (code >= 0x1100 && code <= 0x115F) || // 韓国語
-        (code >= 0x2E80 && code <= 0xA4CF) || // CJK系
-        (code >= 0xAC00 && code <= 0xD7A3) || // 韓国語
-        (code >= 0xF900 && code <= 0xFAFF) || // 漢字互換
-        (code >= 0xFE10 && code <= 0xFE6F) || // 表示用句読点
-        (code >= 0xFF00 && code <= 0xFF60) || // 全角英数
-        (code >= 0xFFE0 && code <= 0xFFE6)
-      );
-    }
-
-
 
     function hideAllExceptFirst() {
   if (!timeData.length || !imageList.length) return;
@@ -1016,6 +1028,7 @@ function buildImageIdMap() {
         showTimeSheet();
       }
     }
+
     //TimeSheet表示/非表示
     function showTimeSheet() {
         const timeSheetWindow = document.getElementById('time-sheet-window');
@@ -1111,172 +1124,26 @@ function buildImageIdMap() {
     });
 
 
-    // キーボードショートカット
-    document.addEventListener('keydown', (e) => {
-    // 入力欄にフォーカスしている時はショートカット無効
-    const tag = e.target.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+const shortcuts = initShortcuts({
+  showNext,
+  showPrevious,
+  toggleAuto,
+  reset,
+  toggleTimeSheet,
+  dougaViewToggle,
+  gengaViewToggle,
+  filterCheckbox: checkbox,
+  layerToggles,
+  layerCheckboxes,
+  startAuto,
+  stopAuto,
+  autoScroll
+});
 
+window.showNext = showNext;
+window.showPrevious = showPrevious;
+window.toggleAuto = toggleAuto;
+window.reset = reset;
+window.toggleTimeSheet = toggleTimeSheet;
+window.closeTimeSheet = closeTimeSheet;
 
-    if (isFpsInputMode) {
-
-        // 数字入力
-        if (e.key >= '0' && e.key <= '9') {
-        fpsBuffer += e.key;
-        fpsInputDisplay.textContent = `FPS: ${fpsBuffer}`;
-        fpsInputDisplay.style.display = "block";
-        return;
-        }
-
-        // ← Backspace（1文字削除）
-        if (e.key === "Backspace") {
-        fpsBuffer = fpsBuffer.slice(0, -1); // 末尾1文字削除
-        fpsInputDisplay.textContent = `FPS: ${fpsBuffer}`;
-        fpsInputDisplay.style.display = "block";
-        return;
-        }
-
-        // Enter → 反映
-        if (e.key === "Enter") {
-        if (fpsBuffer.length > 0) {
-            const fpsValue = parseInt(fpsBuffer);
-            const fpsInput = document.getElementById("fps");
-            fpsInput.value = fpsValue;
-
-            fpsInputDisplay.textContent = `FPS 設定: ${fpsValue}`;
-            setTimeout(() => fpsInputDisplay.style.display="none", 600);
-        }
-        fpsBuffer = "";
-        isFpsInputMode = false;
-        if (autoScroll) {
-                stopAuto();
-            }
-        setTimeout(() => startAuto(), 100);
-        
-        return;
-        }
-
-        // Esc → キャンセル
-        if (e.key === "Escape") {
-        fpsInputDisplay.textContent = "キャンセル";
-        setTimeout(() => fpsInputDisplay.style.display="none", 400);
-        fpsBuffer = "";
-        isFpsInputMode = false;
-        return;
-        }
-
-        return; // 入力モード中は他キーを無視
-    }
-
-    if (e.key === "s" || e.key === "S") {
-        isFpsInputMode = true;
-        fpsBuffer = "";
-        fpsInputDisplay.textContent = "FPS入力: ";
-        fpsInputDisplay.style.display = "block";
-        return;
-    }
-
-    if (e.shiftKey && e.key.length === 1) {
-        const upper = e.key.toUpperCase();
-        if (upper >= 'A' && upper <= 'Z') {
-        e.preventDefault();
-        toggleLayerByLabelChar(upper);
-        return;
-        }
-    }
-    switch (e.key) {
-        case 'ArrowRight': // →キー：次のフレーム
-        e.preventDefault();
-        showNext();
-        break;
-
-        case 'ArrowLeft': // ←キー：前のフレーム
-        e.preventDefault();
-        showPrevious();
-        break;
-
-        case ' ': // Space：自動再生ON/OFF
-        e.preventDefault();
-        toggleAuto();
-        break;
-
-        case 'r': // r：リセット
-        case 'R':
-        e.preventDefault();
-        reset();
-        break;
-
-        case '1': // 1：動画ビュー表示切り替え
-        e.preventDefault();
-        if (dougaViewToggle) {
-            dougaViewToggle.checked = !dougaViewToggle.checked;
-            // changeイベントを飛ばして applyViewVisibility を呼ぶ
-            dougaViewToggle.dispatchEvent(new Event('change'));
-        }
-        break;
-
-        case '2': // 2：原画ビュー表示切り替え
-        e.preventDefault();
-        if (gengaViewToggle) {
-            gengaViewToggle.checked = !gengaViewToggle.checked;
-            gengaViewToggle.dispatchEvent(new Event('change'));
-        }
-        break;
-
-        case 'f': // f：原画フィルターON/OFF
-        case 'F':
-        e.preventDefault();
-        if (checkbox) {
-            checkbox.checked = !checkbox.checked;
-            checkbox.dispatchEvent(new Event('change'));
-        }
-        break;
-
-        case 't': // t：タイムシート表示ON/OFF
-        case 'T':
-        e.preventDefault();
-        toggleTimeSheet();
-        break;
-
-        default:
-        break;
-
-    }
-    });
-
-    function toggleLayerByLabelChar(ch) {
-        if (!layerToggles || !layerToggles.length) return;
-
-        const upper = ch.toUpperCase();
-        const code = upper.charCodeAt(0); // 'A' = 65
-        if (code < 65 || code > 90) return;
-
-        const labelIndex = code - 65; // A:0, B:1,...
-        const layerCount = layerToggles.length;
-
-        // ラベル付けは "A + (layerToggles.length - 1 - i)" なので逆変換
-        const i = layerCount - 1 - labelIndex;
-
-        if (i < 0 || i >= layerCount) return;
-        const cb = layerCheckboxes[i];
-        if (!cb) return;
-
-        cb.checked = !cb.checked;
-        cb.dispatchEvent(new Event('change'));
-    }
-
-
-    let isFpsInputMode = false;
-    let fpsBuffer = "";
-
-    let fpsInputDisplay = document.createElement("div");
-    fpsInputDisplay.style.position = "fixed";
-    fpsInputDisplay.style.bottom = "10px";
-    fpsInputDisplay.style.right = "10px";
-    fpsInputDisplay.style.padding = "5px 10px";
-    fpsInputDisplay.style.background = "rgba(0,0,0,0.6)";
-    fpsInputDisplay.style.color = "white";
-    fpsInputDisplay.style.borderRadius = "4px";
-    fpsInputDisplay.style.fontSize = "14px";
-    fpsInputDisplay.style.display = "none";
-    document.body.appendChild(fpsInputDisplay);

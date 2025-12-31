@@ -147,3 +147,45 @@ button {
     width: 100%;
     height: calc(100% - 30px); 
 }
+
+
+.layer-number-tooltip {
+  user-select: none;
+  pointer-events: none;
+}
+
+.loading-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-overlay.hidden{ display:none; }
+
+.loading-box{
+  background: rgba(20,20,20,0.9);
+  color: #fff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  min-width: 240px;
+  text-align: center;
+}
+
+.spinner{
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text{ font-size: 14px; margin-bottom: 6px; }
+.loading-detail{ font-size: 12px; opacity: 0.85; }
