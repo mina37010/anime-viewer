@@ -76,12 +76,66 @@ export function initShortcuts(context) {
     }
 
     /* =========================
+    ショートカットヘルプ
+    ========================= */
+    let shortcutHelpVisible = false;
+
+    const shortcutHelpOverlay = document.createElement("div");
+    shortcutHelpOverlay.className = "shortcut-help-overlay";
+    shortcutHelpOverlay.style.display = "none";
+
+    shortcutHelpOverlay.innerHTML = `
+    <div class="shortcut-help-panel">
+        <h2>ショートカット一覧</h2>
+        <table>
+        <tr><td>→</td><td>次のフレーム</td></tr>
+        <tr><td>←</td><td>前のフレーム</td></tr>
+        <tr><td>Space</td><td>自動再生 ON / OFF</td></tr>
+        <tr><td>R</td><td>最初に戻す</td></tr>
+        <tr><td>S</td><td>FPS入力</td></tr>
+        <tr><td>1</td><td>動画ビュー切替</td></tr>
+        <tr><td>2</td><td>原画ビュー切替</td></tr>
+        <tr><td>F</td><td>原画フィルター</td></tr>
+        <tr><td>T</td><td>タイムシート表示</td></tr>
+        <tr><td>Shift + 数字</td><td>レイヤー表示切替</td></tr>
+        <tr><td>?</td><td>このヘルプを表示</td></tr>
+        <tr><td>Esc</td><td>閉じる</td></tr>
+        </table>
+    </div>
+    `;
+
+    document.body.appendChild(shortcutHelpOverlay);
+
+    function toggleShortcutHelp(show = !shortcutHelpVisible) {
+        shortcutHelpVisible = show;
+        shortcutHelpOverlay.style.display = show ? "flex" : "none";
+    }
+
+
+    /* =========================
         キーボード処理
     ========================= */
     document.addEventListener("keydown", (e) => {
         const tag = e.target.tagName;
+        
         if (tag === "INPUT" || tag === "TEXTAREA") return;
 
+        // ? → ショートカットヘルプ表示
+        if (e.code === "Slash" && e.shiftKey && !isFpsInputMode) {
+            console.log("q")
+            e.preventDefault();
+            toggleShortcutHelp();
+            return;
+        }
+
+        // Esc → ヘルプを閉じる
+        if (e.key === "Escape" && shortcutHelpVisible) {
+            e.preventDefault();
+            toggleShortcutHelp(false);
+            return;
+        }
+
+        if (shortcutHelpVisible) return;
         // Shift 押下 → tooltip 表示
         if (e.key === "Shift") {
         showLayerNumberTooltips(true);
@@ -185,6 +239,12 @@ export function initShortcuts(context) {
     document.addEventListener("keyup", (e) => {
         if (e.key === "Shift") {
         showLayerNumberTooltips(false);
+        }
+    });
+
+    shortcutHelpOverlay.addEventListener("click", (e) => {
+        if (e.target === shortcutHelpOverlay) {
+            toggleShortcutHelp(false);
         }
     });
 

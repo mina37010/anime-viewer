@@ -92,6 +92,10 @@ button {
     width: 14px;
     height: 14px;
 }
+.timeline-point.genga-multi {
+  outline: 3px solid rgb(87, 0, 154);
+}
+
 .timeline-marker {
     position: absolute;
     top: 50%;
@@ -189,3 +193,46 @@ button {
 
 .loading-text{ font-size: 14px; margin-bottom: 6px; }
 .loading-detail{ font-size: 12px; opacity: 0.85; }
+
+
+.shortcut-help-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.shortcut-help-panel {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 24px 28px;
+  border-radius: 8px;
+  min-width: 420px;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.shortcut-help-panel h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.shortcut-help-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shortcut-help-panel td {
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.shortcut-help-panel td:first-child {
+  white-space: nowrap;
+  font-weight: bold;
+  color: #ffd479;
+}

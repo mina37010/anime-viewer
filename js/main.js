@@ -1,7 +1,7 @@
 import { initShortcuts } from "./shortcuts.js";
 
 
-
+  // ------ ロード部 ------ // 
   function showLoading(detailText = "") {
     const overlay = document.getElementById("loading-overlay");
     const detail = document.getElementById("loading-detail");
@@ -22,7 +22,7 @@ import { initShortcuts } from "./shortcuts.js";
   }
 
 
-// ------ ビューワートグル機能 ------ // 
+  // ------ ビューワートグル機能 ------ // 
     const checkbox = document.getElementById('toggleCheck');
     const targetBox = document.getElementById('genga_OSD');
 
@@ -92,8 +92,6 @@ import { initShortcuts } from "./shortcuts.js";
     let gengaItemMap = new Map();
     let gengaIdMap = []; // 画像ごとのgenga IDを格納
     let gengaLabelMap =[]
-    let gengaLoadedIds = new Set(); // genga viewerに追加済みのID
-    const viewerItemMap = new Map();
 
     let secondaryGengaOpacityRatio = 0.6; //修正原画用opacity
 
@@ -112,6 +110,9 @@ import { initShortcuts } from "./shortcuts.js";
     //レイヤーショートカット
     let layerCheckboxes = [];
 
+    //collection用レイヤー名
+    let layerNames = [];
+
 
     function renderTimelineAll() {
       const wrapper = document.getElementById('timeline-wrapper');
@@ -129,7 +130,7 @@ import { initShortcuts } from "./shortcuts.js";
           controlRow.className = 'timeline-header-controls';
 
           const label = document.createElement('span');
-          label.textContent = String.fromCharCode(65 + (layerToggles.length - 1 - i));
+          label.textContent = layerNames?.[i] ?? String.fromCharCode(65 + (layerToggles.length - 1 - i));
 
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
@@ -256,8 +257,15 @@ import { initShortcuts } from "./shortcuts.js";
 
         if (hasGenga) {
           point.classList.add('genga');
+
           if (layerToggles[num]) {
-            point.style.backgroundColor = `crimson`;
+            point.style.backgroundColor = 'crimson';
+
+            if (gengaList.length >= 2) {
+              point.classList.add('genga-multi');
+            } else {
+              point.classList.remove('genga-multi');
+            }
           }
         }
 
@@ -384,7 +392,10 @@ function bindTimelineMarkerEvents() {
           prev_gengaIds = [];
         }
         const gengaList = img?.genga || prev_gengaIds;
-        const cleaned = gengaList.map(g => g.replace(/\/info\.json$/, ''));
+        const cleaned = (Array.isArray(gengaList) ? gengaList : [])
+          .filter(g => typeof g === "string")
+          .map(g => g.replace(/\/info\.json$/, ''));
+
         prev_gengaIds = cleaned.length > 0 ? cleaned : prev_gengaIds;
         return cleaned;
       });
@@ -420,17 +431,16 @@ function bindTimelineMarkerEvents() {
         } else if (type === 'Collection') {
           setLoadingDetail("Collectionを解析中…");
           const materials = await loadCollection(json);
-
           setLoadingDetail("タイムラインを構築中…");
           const layerFrameMap = attachGengaToDouga(materials);
+          console.log(materials,layerFrameMap)
+          layerNames = getLayerOrder(layerFrameMap);
           const duration = materials.find(i => i.kind === "カット").duration;
-
           timeData = createTimeData(layerFrameMap, duration);
           imageList = mergeLayersByReverseOrder(layerFrameMap);
-
           titleName = materials.find(i => i.kind === "カット")?.Title ?? "";
           timeSheetUrl = materials.find(i => i.kind === "timesheet_back")?.id ?? null;
-
+          
           initializePlaybackContext({ timeData, imageList, titleName, timeSheetUrl });
 
         } else {
@@ -498,8 +508,6 @@ function bindTimelineMarkerEvents() {
         title.appendChild(titleText);
 
         // --- プリロード ---
-
-        // --- プリロード ---
         setLoadingDetail("原画をプリロード中…");
         preloadAllGengaImages(() => {
           setLoadingDetail("動画をプリロード中…");
@@ -533,6 +541,8 @@ function bindTimelineMarkerEvents() {
                     (manifest.metadata[1].value !== "" ? " Ep" + manifest.metadata[1].value : "") +
                     " C" + manifest.metadata[2].value;
 
+
+        layerNames = Array(timeData[0].length).fill(0).map((_, i) => String.fromCharCode(65 + (timeData[0].length - 1 - i)));
         initializePlaybackContext({timeData,imageList,titleName,timeSheetUrl});
     }
 
@@ -571,17 +581,29 @@ function bindTimelineMarkerEvents() {
                     id
                 });
             }else if (kind == "timesheet_front"){}
-            else{
-                const id = extractImageServiceId(manifest);
-                if (!id) continue;
+            else if (kind === "genga") {
+              const ids = extractGengaServiceIds(manifest);
+              if (!ids.length) continue;
 
-                materials.push({
-                    kind,
-                    layer: meta['レイヤー'] || null,
-                    frame: Number(meta['フレーム番号'] || 0),
-                    label: meta['identifier'] || null,
-                    id
-                });
+              materials.push({
+                kind,
+                layer: meta['レイヤー'] || null,
+                frame: Number(meta['フレーム番号'] || 0),
+                label: meta['identifier'] || null,
+                ids
+              });
+
+            } else {
+              const id = extractImageServiceId(manifest);
+              if (!id) continue;
+
+              materials.push({
+                kind,
+                layer: meta['レイヤー'] || null,
+                frame: Number(meta['フレーム番号'] || 0),
+                label: meta['identifier'] || null,
+                id
+              });
             }
         }
         return materials;
@@ -629,6 +651,31 @@ function bindTimelineMarkerEvents() {
             return service.id;
         }
 
+
+        function extractGengaServiceIds(manifest) {
+            const ids = [];
+
+            const canvases = manifest.items ?? [];
+            for (const canvas of canvases) {
+              const page = canvas.items?.[0];
+              const anno = page?.items?.[0];
+              const body = anno?.body;
+              if (!body) continue;
+
+              const services = Array.isArray(body.service)
+                ? body.service
+                : body.service ? [body.service] : [];
+
+              for (const service of services) {
+                if (service?.id) {
+                  ids.push(service.id);
+                }
+              }
+          }
+
+          return ids;
+        }
+
     function attachGengaToDouga(data) {
         // 1. genga を layer+frame でまとめる
         const gengaMap = data
@@ -641,7 +688,9 @@ function bindTimelineMarkerEvents() {
                 genga: []
                 };
             }
-            acc[key].genga.push(item.id);
+            if (Array.isArray(item.ids)) {
+              acc[key].genga.push(...item.ids);
+            }
             return acc;
             }, {});
 
@@ -849,7 +898,7 @@ function buildImageIdMap() {
 
       //表示用
       if (numberDisplay) {
-        numberDisplay.textContent = `フレーム番号: ${currentIndex}`;
+        numberDisplay.textContent = `フレーム番号: ${currentIndex+1}`;
       }
 
 
@@ -1128,8 +1177,6 @@ function buildImageIdMap() {
         if (url.endsWith('/info.json')) {
           return url;
         }
-
-        // 末尾スラッシュを除去して info.json を付与
         return url.replace(/\/$/, '') + '/info.json';
       }
 
@@ -1187,6 +1234,7 @@ function buildImageIdMap() {
     });
 
 
+//ショートカット
 const shortcuts = initShortcuts({
   showNext,
   showPrevious,
@@ -1203,6 +1251,7 @@ const shortcuts = initShortcuts({
   autoScroll
 });
 
+//ボタン操作系
 window.showNext = showNext;
 window.showPrevious = showPrevious;
 window.toggleAuto = toggleAuto;
