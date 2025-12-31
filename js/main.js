@@ -869,80 +869,143 @@ function buildImageIdMap() {
     }
 
     function hideAllExceptFirst() {
-  if (!timeData.length || !imageList.length) return;
-  gengaCount = 0;
-  const frame0 = timeData[0];
-  const displayTargets = new Set();
+      if (!timeData.length || !imageList.length) return;
+      gengaCount = 0;
+      const frame0 = timeData[0];
+      const displayTargets = new Set();
 
-  // フレーム0で表示するserviceIdを収集
-  frame0.forEach((index, i) => {
-    if (!layerToggles[i]) return;
-    const offset = layerOffsets[i] ?? 1;
-    const adjusted = (i > 0 && index === 0) ? index + offset : index + offset - 1;
-    const serviceId = imageListId[adjusted];
-    if (!serviceId) return;
-    displayTargets.add(serviceId);
-  });
-
-  // ✅ viewer内のitemたちをMapにキャッシュ（id → item）
-  const viewerItemMap = new Map();
-  const viewerCount = viewer.world.getItemCount();
-  for (let i = 0; i < viewerCount; i++) {
-    const item = viewer.world.getItemAt(i);
-    const id = item.source['@id'] || item.source.id;
-    viewerItemMap.set(id, item);
-  }
-
-  // 🔁 各 image に対して処理
-  for (let i = imageList.length - 1; i >= 0; i--) {
-    const img = imageList[i];
-    if (!img?.id) continue;
-
-    const serviceId = imageListId[i];
-    const imageIndex = imageIdToIndex.get(serviceId);
-
-    const isDisplayTarget = displayTargets.has(serviceId);
-    const gengaOpacity = isDisplayTarget && imageIndex > 0 && gengaCount === 0
-      ? 1
-      : isDisplayTarget && imageIndex > 0
-        ? layer_opacity[imageIndex]
-        : 0.0;
-
-    if (isDisplayTarget && imageIndex > 0 && gengaCount === 0) {
-      gengaCount = 1;
-    }
-
-    const item = viewerItemMap.get(serviceId);
-    if (item) {
-      setLayerVisibility(serviceId, isDisplayTarget, gengaOpacity);
-    } else {
-      viewer.addTiledImage({
-        tileSource: `${serviceId}/info.json`,
-        opacity: isDisplayTarget ? 1.0 : 0.0,
-        success: () => {
-          setLayerVisibility(serviceId, isDisplayTarget, gengaOpacity);
-        }
+      // フレーム0で表示するserviceIdを収集
+      frame0.forEach((index, i) => {
+        if (!layerToggles[i]) return;
+        const offset = layerOffsets[i] ?? 1;
+        const adjusted = (i > 0 && index === 0) ? index + offset : index + offset - 1;
+        const serviceId = imageListId[adjusted];
+        if (!serviceId) return;
+        displayTargets.add(serviceId);
       });
+
+      // ✅ viewer内のitemたちをMapにキャッシュ（id → item）
+      const viewerItemMap = new Map();
+      const viewerCount = viewer.world.getItemCount();
+      for (let i = 0; i < viewerCount; i++) {
+        const item = viewer.world.getItemAt(i);
+        const id = item.source['@id'] || item.source.id;
+        viewerItemMap.set(id, item);
+      }
+
+      // 🔁 各 image に対して処理
+      for (let i = imageList.length - 1; i >= 0; i--) {
+        const img = imageList[i];
+        if (!img?.id) continue;
+
+        const serviceId = imageListId[i];
+        const imageIndex = imageIdToIndex.get(serviceId);
+
+        const isDisplayTarget = displayTargets.has(serviceId);
+        const gengaOpacity = isDisplayTarget && imageIndex > 0 && gengaCount === 0
+          ? 1
+          : isDisplayTarget && imageIndex > 0
+            ? layer_opacity[imageIndex]
+            : 0.0;
+
+        if (isDisplayTarget && imageIndex > 0 && gengaCount === 0) {
+          gengaCount = 1;
+        }
+
+        const item = viewerItemMap.get(serviceId);
+        if (item) {
+          setLayerVisibility(serviceId, isDisplayTarget, gengaOpacity);
+        } else {
+          viewer.addTiledImage({
+            tileSource: `${serviceId}/info.json`,
+            opacity: isDisplayTarget ? 1.0 : 0.0,
+            success: () => {
+              setLayerVisibility(serviceId, isDisplayTarget, gengaOpacity);
+            }
+          });
+        }
+      }
+
+      currentIndex = 0;
+      showFrame(0);
     }
-  }
-
-  currentIndex = 0;
-  showFrame(0);
-}
 
 
+    function isSameFrame(a, b) {
+      if (!a || !b) return false;
+      if (a.length !== b.length) return false;
+      for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) return false;
+      }
+      return true;
+    }
 
     function showNext() {
-      if (currentIndex < timeData.length - 1) {
-        showFrame(currentIndex + 1);
+      const base = timeData[currentIndex];
+      for (let i = currentIndex + 1; i < timeData.length; i++) {
+        if (!isSameFrame(base, timeData[i])) {
+          showFrame(i);
+          return;
+        }
       }
     }
 
     function showPrevious() {
-      if (currentIndex > 0) {
-        showFrame(currentIndex - 1);
+      const current = timeData[currentIndex];
+      if (!current) return;
+
+      //今がブロック途中か？
+      const isMiddle =
+        currentIndex > 0 &&
+        isSameFrame(current, timeData[currentIndex - 1]);
+
+      //同じなら
+      if (isMiddle) {
+        let target = currentIndex;
+
+        for (let i = currentIndex - 1; i >= 0; i--) {
+          if (isSameFrame(timeData[i], current)) {
+            target = i;
+          } else {
+            break;
+          }
+        }
+
+        showFrame(target);
+        return;
+      }
+
+      //そうでないなら
+      let found = -1;
+
+      for (let i = currentIndex - 1; i >= 0; i--) {
+        if (!isSameFrame(timeData[i], current)) {
+          found = i;
+          break;
+        }
+      }
+      if (found === -1) return;
+
+      // 前ブロックの先頭へ
+      for (let i = found - 1; i >= 0; i--) {
+        if (isSameFrame(timeData[i], timeData[found])) {
+          found = i;
+        } else {
+          break;
+        }
+      }
+
+      showFrame(found);
+    }
+
+
+    function autoshowNext() {
+      if (currentIndex < timeData.length - 1) {
+        showFrame(currentIndex + 1);
+        timeData[currentIndex]
       }
     }
+
 
     function reset() {
       hideAllExceptFirst();
@@ -977,7 +1040,7 @@ function buildImageIdMap() {
       if (currentIndex >= timeData.length - 1) {
         reset();
       } else {
-        showNext();
+        autoshowNext();
       }
     }
 
