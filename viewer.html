@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>アニメ制作資料再生システム</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="title" class="title">アニメ制作資料再生システム</div>
+
+  <div class="OSD_containner">
+    <div id="genga_OSD"></div> 
+    <div id="douga_OSD"></div>
+  </div>
+  
+  <div class="controls">
+    <button onclick="showPrevious()">前へ</button>
+    <button onclick="showNext()">次へ</button>
+    <button id="autoBtn" onclick="toggleAuto()">▶ 自動</button>
+    <button onclick="reset()">↺ 最初に戻す</button>
+    FPS: <input type="number" id="fps" value="24" min="1" style="width: 60px;">
+
+    <label>
+      <input type="checkbox" id="toggleGengaView" checked> 原画ビュー
+    </label>
+    <label>
+      <input type="checkbox" id="toggleDougaView" checked> 動画ビュー
+    </label>
+    
+    <label>
+      <input type="checkbox" id="toggleCheck">原画フィルター
+    </label>
+    <button id="show-time-sheet-button" onclick="toggleTimeSheet()" disabled>タイムシート表示</button>
+    <label>
+      修正原画の透過度係数:
+      <input id="globalOpacitySlider" type="range" min="0.0" max="1.5" step="0.01" style="width:80px">
+      <span id="globalOpacityDisplay">0.60</span>
+    </label>
+  </div>
+
+  <div id="layer-controls"></div>
+  
+  <div class="back" id="timeline-wrapper" ></div>
+
+  <div id="time-sheet-window" >
+    <div id="time-sheet-header">
+      <span>タイムシート</span>
+      <button onclick="closeTimeSheet()">✕</button>
+    </div>
+    <div id="time-sheet-content"></div>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>

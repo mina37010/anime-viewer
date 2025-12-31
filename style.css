@@ -1,0 +1,149 @@
+body{
+    background:#eee;
+    overflow-x: hidden;
+}
+.title{
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.OSD_containner{
+    display: flex;
+    gap: 1vw; 
+}
+#douga_OSD,
+#genga_OSD {
+    flex: 1 1 0;
+    min-width: 0;      
+    height: 68vh;
+    background: #fff;
+    border: 1px solid #000;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.filter{
+    filter: invert(1) brightness(500%) saturate(0%) invert(1) ;
+}
+
+.controls {
+    text-align: center;
+}
+button {
+    margin-right: 10px;
+}
+
+#layer-controls{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+.layer-label-box {
+    display: inline-block;
+    min-width: 100px;
+    /*font-family: monospace;*/
+    margin-left: 10px;
+}
+
+.timeline-header-controls{
+    padding-top:5px;
+}
+/*タイムライン用*/
+.back {
+    width: 100%;
+    margin: 10px auto auto auto;
+    max-height: 30vh; 
+    overflow-y: auto;   
+    border: 1px solid #ccc;
+    background-color: #fff; 
+    padding-right: 8px;     
+}
+.timeline-container {
+    position: relative;
+    width: 98%;
+    margin: auto;
+    height: 3vh;
+}
+.timeline-bar {
+    position: relative;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 5px;
+    background-color: #aaa;
+    border-radius: 5px;
+}
+.timeline-point {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.timeline-point.genga {
+    width: 14px;
+    height: 14px;
+}
+.timeline-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 100%;
+    background-color: #006ee3;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/*タイムシート表示用*/
+#time-sheet-window {
+    display: block; 
+    position: absolute;
+    top: 174px;
+    left: 9px;
+    width: 287px;
+    height: 508px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    resize: both;
+    overflow: hidden;
+    z-index: 1000;
+    cursor: move;
+}
+
+#time-sheet-header {
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#time-sheet-header span {
+    font-size: 16px;
+}
+
+#time-sheet-header button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#time-sheet-content {
+    width: 100%;
+    height: calc(100% - 30px); 
+}
