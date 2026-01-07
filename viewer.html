@@ -9,7 +9,14 @@
 <body>
 
   <div id="title" class="title">アニメ制作資料再生システム</div>
-
+  <div id="loading-overlay" class="loading-overlay hidden" aria-live="polite">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <div class="loading-text">読み込み中</div>
+      <div id="loading-detail" class="loading-detail"></div>
+    </div>
+    
+  </div>  
   <div class="OSD_containner">
     <div id="genga_OSD"></div> 
     <div id="douga_OSD"></div>
@@ -51,6 +58,6 @@
     </div>
     <div id="time-sheet-content"></div>
   </div>
-  <script src="script.js" defer></script>
+  <script type="module" src="js/main.js" defer></script>
 </body>
 </html>
