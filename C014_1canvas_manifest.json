@@ -1,0 +1,1234 @@
+{
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    "id": "http://localhost/iiifimages/C014_1canvas_manifest.json",
+    "type": "Manifest",
+    "label": "LWA_C014",
+    "metadata": [
+        {
+            "label": "Title",
+            "value": "リトルウィッチアカデミア"
+        },
+        {
+            "label": "Ep",
+            "value": ""
+        },
+        {
+            "label": "Cut",
+            "value": "014"
+        },
+        {
+            "label": "second",
+            "value": 3
+        },
+        {
+            "label": "Coma",
+            "value": 12
+        }
+    ],
+    "TimeSheet": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!TimeSheet!TimeSheet_C014_02/info.json",
+    "items": [
+        {
+            "id": "http://localhost/canvas/C014_A",
+            "type": "Canvas",
+            "width": 2041,
+            "height": 1199,
+            "label": "A,B",
+            "time": [[0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 2], [0, 2], [0, 2], [0, 3], [0, 3], [0, 3], [0, 4], [0, 4], [0, 4], [0, 5], [0, 5], [0, 5], [0, 6], [0, 6], [0, 6], [0, 6], [0, 6], [0, 6], [0, 7], [0, 7], [0, 8], [0, 8], [1, 9], [2, 9], [3, 10], [3, 10], [4, 11], [4, 11], [5, 12], [6, 12], [7, 13], [7, 13], [8, 14], [8, 14], [9, 15], [9, 15], [10, 16], [10, 16], [11, 17], [11, 17], [12, 18], [12, 18], [13, 19], [13, 19], [14, 20], [14, 20], [15, 21], [15, 21], [16, 22], [16, 22], [17, 23], [17, 23], [18, 24], [18, 24], [19, 25], [19, 25], [20, 26], [20, 26], [21, 27], [21, 27], [22, 28], [22, 28], [23, 29], [23, 29], [24, 30], [24, 30], [25, 31], [26, 31], [27, 31], [27, 32], [28, 32], [28, 32], [29, 33], [29, 33], [30, 33], [30, 34], [31, 34],[31, 34]],
+            "items": [
+                {
+                    "id": "page/C014_A",
+                    "type": "AnnotationPage",
+                    "items": [
+                        {
+                            "id": "C014_A-image",
+                            "type": "Annotation",
+                            "motivation": "painting",
+                            "body": {
+                                "type": "Choice",
+                                "items": [
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B001_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B1",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_016/info.json"
+                                        ],
+                                        "gengalabel": "B1",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B001_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B002_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B2",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_015/info.json"
+                                        ],
+                                        "gengalabel": "B1.5",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B002_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B003_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B3",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_014/info.json"
+                                        ],
+                                        "gengalabel": "B1.7",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B003_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B004_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B4",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B004_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B005_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B5",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_012/info.json",
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_011/info.json"
+                                        ],
+                                        "gengalabel": "B3",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B005_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B006_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B6",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B006_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B007_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B7",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B007_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B008_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B8",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_010/info.json"
+                                        ],
+                                        "gengalabel": "B4",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B008_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B009_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B9",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B009_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B010_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B10",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_009/info.json"
+                                        ],
+                                        "gengalabel": "B5",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B010_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B011_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B11",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_008/info.json"
+                                        ],
+                                        "gengalabel": "B6",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B011_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B012_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B12",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B012_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B013_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B13",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_007/info.json"
+                                        ],
+                                        "gengalabel": "B7",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B013_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B014_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B14",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B014_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B015_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B15",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_006/info.json"
+                                        ],
+                                        "gengalabel": "B8",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B015_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B016_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B16",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B016_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B017_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B17",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B017_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B018_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B18",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B018_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B019_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B19",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B019_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B020_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B20",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_005/info.json"
+                                        ],
+                                        "gengalabel": "B9",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B020_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B021_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B21",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B021_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B022_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B22",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B022_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B023_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B23",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_004/info.json"
+                                        ],
+                                        "gengalabel": "B10",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B023_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B024_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B24",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B024_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B025_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B25",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_003/info.json"
+                                        ],
+                                        "gengalabel": "B11",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B025_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B026_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B26",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B026_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B027_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B27",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_002/info.json"
+                                        ],
+                                        "gengalabel": "B12",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B027_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B028_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B28",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B028_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B029_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B29",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B029_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B030_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B30",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B030_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B031_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "B31",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_001/info.json"
+                                        ],
+                                        "gengalabel": "B13",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!B!B031_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A001_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A1",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_036/info.json"
+                                        ],
+                                        "gengalabel": "A1",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A001_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A002_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A2",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A002_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A003_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A3",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A003_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A004_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A4",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A004_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A005_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A5",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A005_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A006_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A6",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_035/info.json"
+                                        ],
+                                        "gengalabel": "A2",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A006_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A007_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A7",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A007_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A008_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A8",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_034/info.json"
+                                        ],
+                                        "gengalabel": "A3",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A008_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A009_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A9",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_033/info.json"
+                                        ],
+                                        "gengalabel": "A4",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A009_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A010_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A10",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_032/info.json"
+                                        ],
+                                        "gengalabel": "A5",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A010_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A011_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A11",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A011_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A012_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A12",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_031/info.json"
+                                        ],
+                                        "gengalabel": "A6",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A012_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A013_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A13",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A013_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A014_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A14",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_030/info.json"
+                                        ],
+                                        "gengalabel": "A7",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A014_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A015_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A15",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A015_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A016_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A16",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A016_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A017_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A17",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_029/info.json"
+                                        ],
+                                        "gengalabel": "A8",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A017_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A018_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A18",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A018_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A019_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A19",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A019_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A020_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A20",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_028/info.json"
+                                        ],
+                                        "gengalabel": "A9",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A020_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A021_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A21",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A021_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A022_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A22",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_027/info.json"
+                                        ],
+                                        "gengalabel": "A10",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A022_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A023_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A23",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A023_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A024_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A24",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A024_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A025_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A25",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A025_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A026_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A26",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_026/info.json",
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_025/info.json",
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_023/info.json"
+                                        ],
+                                        "gengalabel": "A11",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A026_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A027_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A27",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A027_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A028_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A28",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_022/info.json",
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_020/info.json"
+                                        ],
+                                        "gengalabel": "Aア",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A028_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A029_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A29",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A029_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A030_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A30",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_021/info.json"
+                                        ],
+                                        "gengalabel": "Aイ",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A030_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A031_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A31",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A031_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A032_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A32",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A032_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A033_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A33",
+                                        "genga": "",
+                                        "gengalabel": "",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A033_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A034_trans/full/max/0/default.png",
+                                        "type": "Image",
+                                        "format": "image/png",
+                                        "width": 2041,
+                                        "height": 1199,
+                                        "label": "A34",
+                                        "genga": [
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_019/info.json",
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_017/info.json",
+                                            "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!KeyFrame!KeyFrame_C014_018/info.json"
+                                        ],
+                                        "gengalabel": "A12",
+                                        "service": [
+                                            {
+                                                "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A034_trans",
+                                                "type": "ImageService3",
+                                                "profile": "level2"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "target": "http://localhost/canvas/C014_A"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "thumbnail": [
+        {
+            "id": "http://localhost/tomcat/digilib/Scaler/IIIF/iiifimages!C014!A!A002_trans/full/max/0/default.png",
+            "type": "Image",
+            "format": "image/png",
+            "width": 2041,
+            "height": 1199
+        }
+    ]
+}
